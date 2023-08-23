@@ -1,0 +1,269 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/*=========================================LAYOUT==========================================================*/
+body {
+  font-family: Satoshi-Variable, Arial, sans-serif;
+  margin: 0;
+  padding: 2em;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+.section {
+  padding: 40px 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.portfolio-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.item img {
+	border-radius: 30px;
+}
+
+/*================================================TYPOGRAPHY=======================================================*/
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('fonts/Satoshi-Variable.ttf');
+}
+
+@font-face {
+  font-family: 'Satoshi Variable Italic';
+  src: url('fonts/Satoshi-VariableItalic.ttf');
+}
+
+.portofolio-link {
+	text-decoration: none;
+	color: rebeccapurple;
+
+}
+.portofolio-link h3 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+p {
+	padding: 15px;
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 6.5em;
+}
+
+h2 {
+	font-weight: 700;
+	font-size: 3.5em;
+	margin-bottom: 1em;
+}
+a {
+	text-decoration: none;
+	color: rebeccapurple;
+}
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  header {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .portfolio-items .item {
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjustments for even smaller screens */
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .portfolio-items {
+    flex-direction: column;
+  }
+
+  .item {
+    flex-basis: 100%;
+  }
+}
+
+/*TOGGLE IMAGES*/
+.description {
+	  display: none; /* Hide the images by default */
+
+}
+.item img {
+  width: 100%;
+  height: auto;
+}
+
+/* Rest of the CSS code */
+
+.toggle-btn {
+  display: block;
+  margin-bottom: 10px;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  transition: background-color 0.3s;
+  outline: none;
+  position: relative;
+}
+
+.toggle-btn::before,
+.toggle-btn::after {
+  content: "";
+  position: absolute;
+  background-color: #333;
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s;
+}
+
+.toggle-btn::before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.toggle-btn::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.toggle-btn.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.toggle-btn.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
