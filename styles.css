@@ -71,7 +71,9 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
 }
-
+.free-cook {
+  border: 1px groove #3e3e40;
+}
 .container {
   max-width: 960px;
   margin: 0 auto;
