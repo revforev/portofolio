@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('/portofolio/fonts/Satoshi-Variable.ttf');
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #2c2c2e;
+  --color-accent: #7b5ea7;
+  --color-accent-hover: #9b7bc0;
+  --font-sans: 'Satoshi-Variable', Arial, sans-serif;
+}
