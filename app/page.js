@@ -1,4 +1,5 @@
 import PortfolioItem from '@/components/PortfolioItem'
+import ScrambleText from '@/components/ScrambleText'
 
 const webDesign = [
   {
@@ -93,7 +94,7 @@ const music = [
 function PortfolioSection({ title, items }) {
   return (
     <div className="max-w-4xl mx-auto px-5 py-10">
-      <h2 className="text-5xl font-bold mb-8">{title}</h2>
+      <ScrambleText text={title} className="text-5xl font-bold mb-8" />
       <div className="flex flex-wrap justify-between">
         {items.map((item) => (
           <PortfolioItem key={item.id} {...item} />
