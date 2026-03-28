@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 export default function PortfolioItem({ href, image, alt, title, description, bordered, extras }) {
   const [open, setOpen] = useState(false)
@@ -9,11 +9,9 @@ export default function PortfolioItem({ href, image, alt, title, description, bo
   return (
     <div className="w-[calc(50%-10px)] mb-5">
       <a href={href} target="_blank" rel="noopener noreferrer">
-        <Image
-          src={image}
+        <img
+          src={`${BASE}${image}`}
           alt={alt}
-          width={960}
-          height={600}
           className={`w-full h-auto${bordered ? ' border border-[#3e3e40]' : ''}`}
         />
       </a>
