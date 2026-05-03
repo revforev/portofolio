@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main style={{ background: '#f3efe6', minHeight: '100vh', padding: '48px 0' }}>
+    <main style={{ background: '#fff', minHeight: '100vh', padding: 0 }}>
       <ClevelandOurPeople />
     </main>
   )

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 
 const TONES = [
   { bg: '#cdb89a', fg: '#5a4a36' },
@@ -31,7 +30,7 @@ const people = [
     name: 'Alejandro Alemany',
     role: 'Senior Counsel',
     cat: 'Legal',
-    photo: '/images/alejandro.png',
+    photo: '/portofolio/images/alejandro.png',
     expertise: 'Financial Services Regulation, Funds, Alternative Investments, Joint Ventures, Secondaries, Derivatives, Securities Lending, Structuring & Restructuring, Distribution, Corporate, Commercial',
     experience: '15+ years',
     qualified: 'England & Wales and Spain',
@@ -45,7 +44,7 @@ const people = [
     name: 'Jack Ashford',
     role: 'Paralegal',
     cat: 'Legal',
-    photo: '/images/jack.png',
+    photo: '/portofolio/images/jack.png',
     expertise: 'Investment Management, Financial Services Regulation, Funds, Alternative Funds, Securities, Trading and Investments, Derivatives, Securities Lending, Structuring and Restructuring, Distribution, Corporate, Commercial',
     experience: '3.5 years',
     qualified: 'Paralegal',
@@ -59,7 +58,7 @@ const people = [
     name: 'James Breffitt',
     role: 'Partner',
     cat: 'Legal',
-    photo: '/images/james.jpg',
+    photo: '/portofolio/images/james.jpg',
     expertise: 'Funds, Investment Management, Financial Services Regulation, Joint Ventures, M&A, Asset Management, Corporate Governance, General Corporate, Regulatory, Renewable Energy Projects, Clean Energy Projects',
     experience: '13 years',
     qualified: 'England & Wales',
@@ -83,23 +82,25 @@ function FilterNavA({ active, onFilter, showing, total }) {
 
   return (
     <div className="subnavWrap paper">
-      <nav className="subA" aria-label="Filter team by practice (Option A)">
-        <div className="lbl">Filter by practice</div>
-        <div className="nitems">
-          {labels.map(({ key, num, label }) => (
-            <button
-              key={key}
-              className={`nitem${active === key ? ' active' : ''}`}
-              onClick={() => onFilter(key)}
-            >
-              <span className="num">{num}</span>
-              {label}{' '}
-              <span style={{ opacity: 0.55, marginLeft: 4 }}>{counts[key]}</span>
-            </button>
-          ))}
-        </div>
-        <div className="nright">{String(showing).padStart(2, '0')} SHOWING</div>
-      </nav>
+      <div className="inner">
+        <nav className="subA" aria-label="Filter team by practice (Option A)">
+          <div className="lbl">Filter by practice</div>
+          <div className="nitems">
+            {labels.map(({ key, num, label }) => (
+              <button
+                key={key}
+                className={`nitem${active === key ? ' active' : ''}`}
+                onClick={() => onFilter(key)}
+              >
+                <span className="num">{num}</span>
+                {label}{' '}
+                <span style={{ opacity: 0.55, marginLeft: 4 }}>{counts[key]}</span>
+              </button>
+            ))}
+          </div>
+          <div className="nright">{String(showing).padStart(2, '0')} SHOWING</div>
+        </nav>
+      </div>
     </div>
   )
 }
@@ -116,24 +117,26 @@ function FilterNavB({ active, onFilter, showing, total }) {
 
   return (
     <div className="subnavWrap lite">
-      <nav className="subB" aria-label="Filter team by practice (Option B)">
-        <div className="lbl">Practice ↓</div>
-        <div className="bitems">
-          {labels.map(({ key, label }) => (
-            <button
-              key={key}
-              className={`bitem${active === key ? ' active' : ''}`}
-              onClick={() => onFilter(key)}
-            >
-              <span className="blbl">{label}</span>
-              <span className="bnum">{String(counts[key]).padStart(2, '0')}</span>
-            </button>
-          ))}
-        </div>
-        <div className="lbl" style={{ borderLeft: '1px solid var(--hairline-soft)', paddingLeft: 18 }}>
-          {String(showing).padStart(2, '0')} / {String(total).padStart(2, '0')} SHOWING
-        </div>
-      </nav>
+      <div className="inner">
+        <nav className="subB" aria-label="Filter team by practice (Option B)">
+          <div className="lbl">Practice ↓</div>
+          <div className="bitems">
+            {labels.map(({ key, label }) => (
+              <button
+                key={key}
+                className={`bitem${active === key ? ' active' : ''}`}
+                onClick={() => onFilter(key)}
+              >
+                <span className="blbl">{label}</span>
+                <span className="bnum">{String(counts[key]).padStart(2, '0')}</span>
+              </button>
+            ))}
+          </div>
+          <div className="lbl" style={{ borderLeft: '1px solid var(--hairline-soft)', paddingLeft: 18 }}>
+            {String(showing).padStart(2, '0')} / {String(total).padStart(2, '0')} SHOWING
+          </div>
+        </nav>
+      </div>
     </div>
   )
 }
@@ -192,100 +195,97 @@ export default function ClevelandOurPeople() {
   return (
     <div className="deploy">
 
-      {/* ====== OPTION A — Editorial, real B&W photos ====== */}
-      <header className="optionDelim" style={{ borderTopWidth: 0 }}>
-        <div className="optionTag">Option A · Editorial · keeps existing portraits</div>
-        <h2 className="optionTitle">Our People — Option A</h2>
-      </header>
+      {/* ====== SECTION A — paper background, Editorial ====== */}
+      <div className="sectionA">
+        <div className="inner">
+          <header className="optionDelim">
+            <div className="optionTag">Option A · Editorial · keeps existing portraits</div>
+            <h2 className="optionTitle">Our People — Option A</h2>
+          </header>
 
-      <div className="pageH">
-        <div className="crumbs">Life at Cleveland &amp; Co. / Our People</div>
-        <h1>Our People</h1>
-        <p>Pacesetting professionals across funds, investment management, financial services regulation and corporate governance.</p>
+          <div className="pageH">
+            <div className="crumbs">Life at Cleveland &amp; Co. / Our People</div>
+            <h1>Our People</h1>
+            <p>Pacesetting professionals across funds, investment management, financial services regulation and corporate governance.</p>
+          </div>
+        </div>
+
+        <FilterNavA active={filterA} onFilter={setFilterA} showing={visibleA.length} total={people.length} />
+
+        <div className="inner">
+          <section className="rowCards">
+            <div className="grid" data-active={filterA}>
+              {people.map((person, i) => (
+                <article
+                  key={person.name}
+                  className="cardA"
+                  data-cat={person.cat}
+                  style={{ display: visibleA.includes(person) ? 'flex' : 'none' }}
+                >
+                  <div className="photoFrame" aria-label={`Portrait of ${person.name}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={person.photo} alt={`Portrait of ${person.name}`} />
+                  </div>
+                  <div className="roleA">{person.role}</div>
+                  <h3 className="nameA">{person.name}</h3>
+                  <CardAMeta person={person} />
+                </article>
+              ))}
+            </div>
+            {visibleA.length === 0 && (
+              <div className="empty">No team members in this practice. Try another category.</div>
+            )}
+          </section>
+        </div>
       </div>
 
-      <FilterNavA
-        active={filterA}
-        onFilter={setFilterA}
-        showing={visibleA.length}
-        total={people.length}
-      />
+      {/* ====== SECTION B — white background, Dossier ====== */}
+      <div className="sectionB">
+        <div className="inner">
+          <header className="optionDelim">
+            <div className="optionTag">Option B · Dossier · proposes a single re-shoot</div>
+            <h2 className="optionTitle sans">Our People — Option B</h2>
+          </header>
 
-      <section className="row paper">
-        <div className="grid" data-active={filterA}>
-          {people.map((person, i) => (
-            <article
-              key={person.name}
-              className="cardA"
-              data-cat={person.cat}
-              style={{ display: visibleA.includes(person) ? 'flex' : 'none' }}
-            >
-              <div className="photoFrame" aria-label={`Portrait of ${person.name}`}>
-                <Image
-                  src={person.photo}
-                  alt={`Portrait of ${person.name}`}
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top', filter: 'grayscale(100%)' }}
-                  sizes="(max-width: 960px) 100vw, 300px"
-                />
-              </div>
-              <div className="roleA">{person.role}</div>
-              <h3 className="nameA">{person.name}</h3>
-              <CardAMeta person={person} />
-            </article>
-          ))}
+          <div className="pageH sans">
+            <div className="crumbs">Life at Cleveland &amp; Co. / Our People</div>
+            <h1>Our People</h1>
+            <p>Pacesetting professionals across funds, investment management, financial services regulation and corporate governance.</p>
+          </div>
         </div>
-        {visibleA.length === 0 && (
-          <div className="empty">No team members in this practice. Try another category.</div>
-        )}
-      </section>
 
-      {/* ====== OPTION B — Dossier, SVG placeholders ====== */}
-      <header className="optionDelim">
-        <div className="optionTag">Option B · Dossier · proposes a single re-shoot</div>
-        <h2 className="optionTitle sans">Our People — Option B</h2>
-      </header>
+        <FilterNavB active={filterB} onFilter={setFilterB} showing={visibleB.length} total={people.length} />
 
-      <div className="pageH sans">
-        <div className="crumbs">Life at Cleveland &amp; Co. / Our People</div>
-        <h1>Our People</h1>
-        <p>Pacesetting professionals across funds, investment management, financial services regulation and corporate governance.</p>
+        <div className="inner">
+          <section className="rowCards">
+            <div className="grid" data-active={filterB}>
+              {people.map((person, i) => (
+                <article
+                  key={person.name}
+                  className="cardB"
+                  data-cat={person.cat}
+                  style={{ display: visibleB.includes(person) ? 'flex' : 'none' }}
+                >
+                  <div className="photoB" aria-label={`Portrait of ${person.name}`}>
+                    <PlaceholderPortrait tone={TONES[i % TONES.length]} label={`Portrait of ${person.name}`} />
+                  </div>
+                  <div className="bodyB">
+                    <div className="nameB">{person.name}</div>
+                    <span className="roleB">{person.role.toUpperCase()}</span>
+                    <CardBMeta person={person} />
+                    <div className="tagsB">
+                      {person.tags.map(tag => <span key={tag}>{tag}</span>)}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {visibleB.length === 0 && (
+              <div className="empty">No team members in this practice. Try another category.</div>
+            )}
+          </section>
+        </div>
       </div>
-
-      <FilterNavB
-        active={filterB}
-        onFilter={setFilterB}
-        showing={visibleB.length}
-        total={people.length}
-      />
-
-      <section className="row lite">
-        <div className="grid" data-active={filterB}>
-          {people.map((person, i) => (
-            <article
-              key={person.name}
-              className="cardB"
-              data-cat={person.cat}
-              style={{ display: visibleB.includes(person) ? 'flex' : 'none' }}
-            >
-              <div className="photoB" aria-label={`Portrait of ${person.name}`}>
-                <PlaceholderPortrait tone={TONES[i % TONES.length]} label={`Portrait of ${person.name}`} />
-              </div>
-              <div className="bodyB">
-                <div className="nameB">{person.name}</div>
-                <span className="roleB">{person.role.toUpperCase()}</span>
-                <CardBMeta person={person} />
-                <div className="tagsB">
-                  {person.tags.map(tag => <span key={tag}>{tag}</span>)}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        {visibleB.length === 0 && (
-          <div className="empty">No team members in this practice. Try another category.</div>
-        )}
-      </section>
 
     </div>
   )

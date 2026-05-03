@@ -1,6 +1,6 @@
-/* ---------- Reset just for the embedded section ---------- */
+/* ---------- Reset ---------- */
 .deploy, .deploy *, .deploy *::before, .deploy *::after { box-sizing: border-box; }
-.deploy { color:#1a1a1a; font-family: Inter, system-ui, sans-serif; max-width: 920px; margin: 0 auto; padding: 8px 0 48px; }
+.deploy { color: #1a1a1a; font-family: Inter, system-ui, sans-serif; width: 100%; margin: 0; padding: 0; }
 
 /* ---------- Tokens ---------- */
 .deploy {
@@ -17,24 +17,31 @@
   --teal-deep: #234748;
 }
 
+/* ---------- Two top-level sections ---------- */
+.deploy .sectionA { background: var(--paper); padding: 48px 0 0; }
+.deploy .sectionB { background: #fff; padding: 48px 0 80px; }
+
+/* Inner content column */
+.deploy .inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+
 /* ---------- Section delimiter ---------- */
 .deploy .optionTag { font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; }
 .deploy .optionTitle { font-family:Fraunces, serif; font-weight:500; font-size:46px; line-height:1; letter-spacing:-0.02em; margin:8px 0 0; font-variation-settings:"opsz" 96; }
 .deploy .optionTitle.sans { font-family:"Inter Tight", sans-serif; font-weight:600; font-size:38px; }
-.deploy .optionDelim { padding:48px 64px 28px; border-top:1px solid var(--hairline); }
-.deploy .optionDelim:first-child { border-top:none; }
+.deploy .optionDelim { padding: 0 0 28px; }
 
-/* ---------- Page H1 above sub-nav ---------- */
-.deploy .pageH { padding: 8px 64px 24px; }
+/* ---------- Page H1 ---------- */
+.deploy .pageH { padding: 8px 0 24px; }
 .deploy .pageH .crumbs { font-family:"JetBrains Mono", monospace; font-size:11px; letter-spacing:0.10em; color:var(--muted); text-transform:uppercase; }
 .deploy .pageH h1 { font-family:Fraunces, serif; font-weight:500; font-size:52px; line-height:1; letter-spacing:-0.02em; margin:8px 0 0; font-variation-settings:"opsz" 96; }
 .deploy .pageH.sans h1 { font-family:"Inter Tight", sans-serif; font-weight:600; font-size:40px; }
 .deploy .pageH p { font-size:14px; color:var(--ink-soft); max-width:54ch; margin:14px 0 0; line-height:1.55; }
 
 /* ---------- Sub-nav (sticky) ---------- */
-.deploy .subnavWrap { padding: 0 64px; position: sticky; top: 0; z-index: 5; }
+.deploy .subnavWrap { position: sticky; top: 0; z-index: 5; }
 .deploy .subnavWrap.paper { background: var(--paper); }
 .deploy .subnavWrap.lite { background: #fff; }
+.deploy .subnavWrap .inner { padding-top: 0; padding-bottom: 0; }
 
 /* Nav A — Editorial rule */
 .deploy .subA { display:flex; align-items:flex-end; gap:28px; padding:14px 0 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); }
@@ -57,18 +64,17 @@
 .deploy .subB .bitem .bnum { font-family:"JetBrains Mono", monospace; font-size:11px; color:var(--muted); }
 .deploy .subB .bitem.active::before { content:""; position:absolute; left:8px; right:8px; bottom:-1px; height:2px; background:var(--teal-deep); }
 
-/* ---------- Row layouts ---------- */
-.deploy .row { padding: 12px 64px 80px; }
-.deploy .row.paper { background: var(--paper); }
-.deploy .row.lite  { background: #fff; }
+/* ---------- Card rows ---------- */
+.deploy .rowCards { padding: 12px 0 80px; }
 .deploy .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.deploy .row.lite .grid { gap: 24px; }
+.deploy .sectionB .grid { gap: 24px; }
 .deploy .empty { padding: 48px 0; font-family: Inter; font-size: 14px; color: var(--muted); border-top: 1px solid var(--hairline); }
 
 /* ---------- Card A — Editorial · 5:6 portrait ---------- */
 .deploy .cardA { background:var(--paper); border:1px solid rgba(26,26,26,0.10); padding:24px; transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s, border-color .35s; display:flex; flex-direction:column; }
 .deploy .cardA:hover { transform: translateY(-3px); border-color: rgba(26,26,26,0.28); box-shadow: 0 18px 40px -28px rgba(26,26,26,0.35); }
 .deploy .cardA .photoFrame { width:100%; aspect-ratio: 5/6; position:relative; background:var(--paper-deep); box-shadow: inset 0 0 0 1px rgba(26,26,26,0.18); overflow:hidden; }
+.deploy .cardA .photoFrame img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:grayscale(100%); }
 .deploy .cardA .roleA { font-family:Inter; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ochre-deep); margin-top:20px; }
 .deploy .cardA .nameA { font-family:Fraunces, serif; font-weight:500; font-size:24px; line-height:1.1; letter-spacing:-0.012em; color:var(--ink); margin:4px 0 0; font-variation-settings:"opsz" 36; }
 .deploy .cardA .nameA::after { content:""; display:block; height:1px; width:0; background:var(--ochre); margin-top:10px; transition: width .45s cubic-bezier(.2,.7,.3,1); }
@@ -96,10 +102,9 @@
 .deploy .cardB .tagsB { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
 .deploy .cardB .tagsB span { font-family:Inter; font-size:11px; padding:3px 8px; border:1px solid rgba(26,26,26,0.18); color:var(--ink); border-radius:999px; }
 
-/* ---------- Filtering display ---------- */
-.deploy .grid > article[data-cat] { transition: opacity .3s; }
-.deploy .grid[data-active="all"]   > article[data-cat] { display:flex; }
-.deploy .grid:not([data-active="all"]) > article[data-cat] { display:none; }
+/* ---------- Filtering ---------- */
+.deploy .grid[data-active="all"]        > article[data-cat] { display:flex; }
+.deploy .grid:not([data-active="all"])  > article[data-cat] { display:none; }
 .deploy .grid[data-active="Legal"]      > article[data-cat="Legal"]      { display:flex; }
 .deploy .grid[data-active="Corporate"]  > article[data-cat="Corporate"]  { display:flex; }
 .deploy .grid[data-active="Executive"]  > article[data-cat="Executive"]  { display:flex; }
@@ -107,7 +112,7 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  .deploy .row, .deploy .pageH, .deploy .subnavWrap, .deploy .optionDelim { padding-left:24px; padding-right:24px; }
+  .deploy .inner { padding-left: 20px; padding-right: 20px; }
   .deploy .grid { grid-template-columns: 1fr; }
   .deploy .subA { flex-wrap: wrap; }
   .deploy .subA .nitems { flex-wrap: wrap; gap: 16px; }
