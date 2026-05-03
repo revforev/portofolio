@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/portofolio',
+  basePath: '/cleveland',
   images: {
     unoptimized: true,
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/portofolio',
+    NEXT_PUBLIC_BASE_PATH: '/cleveland',
   },
 }
 
